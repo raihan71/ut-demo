@@ -1,6 +1,8 @@
 import React from 'react';
-import { TextField, Button } from '@material-ui/core';
+import { Button } from '@material-ui/core';
 import PropTypes from 'prop-types';
+import TextField from '../../components/elements/TextField';
+import { convCapitalize } from '../../utils/convCapitalize';
 
 export default class Documents extends React.Component {
   constructor(props) {
@@ -32,7 +34,7 @@ export default class Documents extends React.Component {
 
   _clearValue = () => this.setState({ username: '' });
 
-  _setValueAwal = () => this.setState({ username: 'silahkan isi' });
+  _setValueAwal = () => this.setState({ username: convCapitalize('silahkan isi') });
 
   _handleChangeUsername = ({ target: { value } }) => {
     this.setState({ username: value });
@@ -49,7 +51,7 @@ export default class Documents extends React.Component {
     return (
       <div className={classes.root}>
         <TextField label="username" value={username} onChange={this._handleChangeUsername} />
-        <Button onClick={this._handleCheck} variant="contained">Cek Username</Button>
+        <button onClick={() => this._handleCheck}>Cek Username</button>
       </div>
     );
   }
