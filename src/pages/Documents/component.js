@@ -10,6 +10,30 @@ export default class Documents extends React.Component {
     };
   }
 
+  componentWillMount() {
+    this.setState({ username: 'mounted' });
+  }
+
+  componentDidUpdate() {
+    this._handleCheck();
+  }
+
+  componentDidMount() {
+    this._setValueAwal();
+  }
+
+  componentWillReceiveProps({ username }) {
+    this.setState({ username });
+  }
+
+  componentWillUnmount() {
+    this._clearValue();
+  }
+
+  _clearValue = () => this.setState({ username: '' });
+
+  _setValueAwal = () => this.setState({ username: 'silahkan isi' });
+
   _handleChangeUsername = ({ target: { value } }) => {
     this.setState({ username: value });
   }
@@ -18,6 +42,7 @@ export default class Documents extends React.Component {
     const { username } = this.state;
     alert(username);
   }
+
   render() {
     const { username } = this.state;
     const { classes } = this.props;
@@ -31,5 +56,10 @@ export default class Documents extends React.Component {
 }
 
 Documents.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
+  username: PropTypes.string
+};
+
+Documents.defaultProps = {
+  username: ''
 };

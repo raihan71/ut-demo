@@ -17,5 +17,10 @@ describe('component', () => {
     expect(inst.state.username).toBe('Rizaldi');
     inst._handleCheck();
     expect(window.alert).toHaveBeenCalled();
+
+    comp.setProps({ username: 'Putra' });
+    expect(inst.state.username).toBe('Putra');
+
+    comp.unmount();
   });
 });
