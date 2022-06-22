@@ -1,3 +1,4 @@
+# Unit testing demo
 # Installation
 - Clone project
 - Run `npm install`
